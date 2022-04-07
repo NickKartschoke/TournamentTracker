@@ -14,7 +14,8 @@ def welcome():
     print("Welcome to Tournaments R Us")
     print("============================")
     participants = input("Enter the number of participants: ")
-
+    while not participants.isnumeric():
+        participants = input("Retry enter the NUMBER of participants: ")
     print(f'There are {participants} participant slots ready for sign-ups.')
     return participants
 
@@ -34,8 +35,11 @@ def signUp(p):
     participantName = input("Participant Name: ")
     slotNum = input(f"Desired Starting Slot #[1-{p}]: ")
     while(slotNum not in slots.keys() or slots[slotNum] != None):
-        print(f"Error:\nSlot #{slotNum} is filled. Please try again.\n")
+        print(f"Error: Please try again.\n")
         slotNum = input(f"Desired Starting Slot #[1-{p}]: ")
+    while not participantName.isalpha():
+        print("Error: Please try again.\n")
+        participantName = input("Participant Name: ")
     slots.update({slotNum:participantName})
     print(f"Success:\n{participantName} is signed up in starting slot #{slotNum}.")
 
@@ -56,6 +60,9 @@ def viewParticipants(p):
     print("\nView Participants\n=================")
     slotNum = input(f"Starting slot #[1-{p}]: ")
     print("\nStarting Slot: Participant")
+    while not slotNum.isnumeric() or slotNum < 0 or slotNum > int(p):
+        print("Error: Please try again.\n")
+        slotNum = input(f"Starting slot #[1-{p}]: ")
     start = int(slotNum) - 5
     end = int(slotNum) + 5
     if start <= 0:
