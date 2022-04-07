@@ -18,6 +18,7 @@ def welcome():
     print(f'There are {participants} participant slots ready for sign-ups.')
     return participants
 
+#Create dictionary for number of participants
 def createDict(p):
     dict = {}
     for i in range(int(p)):
@@ -38,6 +39,7 @@ def signUp(p):
     slots.update({slotNum:participantName})
     print(f"Success:\n{participantName} is signed up in starting slot #{slotNum}.")
 
+#Cancel Function
 def cancel(p):
     print("\nParticipant Cancellation\n========================")
     slotNum = input(f"Starting Slot #[1-{p}]: ")
@@ -49,6 +51,7 @@ def cancel(p):
     slots.update({slotNum:None})
     print(f"Success:\n{participantName} has been cancelled from starting slot #{slotNum}.")  
 
+#View participants within 5 starting slots of input stating slot
 def viewParticipants(p):
     print("\nView Participants\n=================")
     slotNum = input(f"Starting slot #[1-{p}]: ")
@@ -64,6 +67,7 @@ def viewParticipants(p):
             print(i, ": ", slots[str(i)])
         else: print(f"{i}: [empty]")
 
+#Save to txt file
 def saveChanges(p):
     print("\nSave Changes\n============")
     saveQuestion = input("Save your changes to a txt file? [y/n]: ")
@@ -76,6 +80,7 @@ def saveChanges(p):
             else: f.write(f"{i}: [empty]\n")
         f.close()
 
+#Quit if user confirms
 def quitFunction():
     print("\nExit\n=====\nAny unsaved changes will be lost.")
     confirmation = input("Are you sure you want to exit? [y/n]: ")
@@ -83,7 +88,9 @@ def quitFunction():
         return False
     else: return True
 
+
 continueLoop = True
+#Main
 while continueLoop:
     mainSelection = mainMenu()
     if mainSelection == '1':
