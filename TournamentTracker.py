@@ -68,7 +68,7 @@ def viewParticipants(p):
         else: print(f"{i}: [empty]")
 
 #Save to txt file
-def saveChanges(p):
+def saveChangesTxt(p):
     print("\nSave Changes\n============")
     saveQuestion = input("Save your changes to a txt file? [y/n]: ")
     if saveQuestion == 'y':
@@ -79,6 +79,19 @@ def saveChanges(p):
                 f.write(f"{i}: {slots[str(i)]}\n")
             else: f.write(f"{i}: [empty]\n")
         f.close()
+
+#Save to CSV file
+def saveChangesCsv(p):
+    print("\nSave Changes\n============")
+    saveQuestion = input("Save your changes to a CSV file? [y/n]: ")
+    if saveQuestion == 'y':
+        filename = "TournamentSelectionSheet.csv"
+        with open(filename, 'w') as file:
+            writer = csv.writer(file)
+            for i in range(1,int(p)+1):
+                data = [i,slots[str(i)]]
+                writer.writerow(data)
+        file.close()
 
 #Quit if user confirms
 def quitFunction():
@@ -100,7 +113,7 @@ while continueLoop:
     elif mainSelection == '3':
         viewParticipants(participants)
     elif mainSelection == '4':
-        saveChanges(participants)
+        saveChangesCsv(participants)
     elif mainSelection == '5':
         continueLoop = quitFunction()
 print ("\nGoodbye!")
