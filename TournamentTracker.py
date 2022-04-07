@@ -1,5 +1,6 @@
 #Prints main menu and returns selection
 from json.tool import main
+import csv
 
 
 def mainMenu():
@@ -63,11 +64,12 @@ def viewParticipants(p):
 
 def saveChanges(p):
     print("Save Changes\n============")
-    saveQuestion = input("Save your changes to CSV? [y/n]: ")
+    saveQuestion = input("Save your changes to a text file? [y/n]: ")
     if saveQuestion == 'y':
-        f = open('TournamentSelectionSheet.txt','w')
+        filename = r"C:\Users\nickk\repo\TournamentTracker\TournamentSelectionSheet.txt"
+        f = open(filename,'w')
         for i in range(1,int(p)+1):
-            f.write(f"{i}: {slots[str(i)]}")
+            f.writelines(f"{i}: {slots[str(i)]}\n")
         f.close()
 
 continueLoop = True
