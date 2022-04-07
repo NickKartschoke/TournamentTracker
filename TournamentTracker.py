@@ -88,12 +88,12 @@ while continueLoop:
     mainSelection = mainMenu()
     if mainSelection == '1':
         signUp(participants)
-    if mainSelection == '2':
+    elif mainSelection == '2':
         cancel(participants)
-    if mainSelection == '3':
+    elif mainSelection == '3':
         viewParticipants(participants)
-    if mainSelection == '4':
+    elif mainSelection == '4':
         saveChanges(participants)
-    if mainSelection == '5':
+    elif mainSelection == '5':
         continueLoop = quitFunction()
 print ("\nGoodbye!")
